@@ -1,0 +1,11 @@
+name: Create AWS ECR
+on:
+  repository_dispatch:
+    types: [my-event]
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ github.event.client_payload.sha }}
+          echo ${{ github.event.client_payload.ref }}

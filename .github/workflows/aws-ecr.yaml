@@ -31,6 +31,7 @@ jobs:
           exit 1
         fi
 
+        mkdir -p "${REPO_PATH}"
         cp -rv template/ecr "${REPO_PATH}"
         sed -i "s/PLACEHOLDER_PRODUCT/${PRODUCT}/g" "${REPO_PATH}/settings.tfvars"
         sed -i "s/PLACEHOLDER_SERVICE/${SERVICE}/g" "${REPO_PATH}/settings.tfvars"

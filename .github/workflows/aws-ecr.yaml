@@ -24,7 +24,7 @@ jobs:
       env:
         REPO_PATH: "infra/${{ env.ENV_NAME }}/ecr/${{ env.PRODUCT }}/${{ env.SERVICE }}"
       run: |
-        set -euo pipefail
+        set -exuo pipefail
 
         if [[ -d "${REPO_PATH}" ]]; then
           echo "${REPO_PATH} is already exist!"
@@ -32,7 +32,7 @@ jobs:
         fi
 
         mkdir -p "${REPO_PATH}"
-        cp -rv template/ecr "${REPO_PATH}"
+        cp -rTv template/ecr/ "${REPO_PATH}"
         sed -i "s/PLACEHOLDER_PRODUCT/${PRODUCT}/g" "${REPO_PATH}/settings.tfvars"
         sed -i "s/PLACEHOLDER_SERVICE/${SERVICE}/g" "${REPO_PATH}/settings.tfvars"
         grep ecr_repo_name "${REPO_PATH}/settings.tfvars"

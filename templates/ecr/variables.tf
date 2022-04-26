@@ -30,5 +30,5 @@ variable "ecr_trusted_account_ids" {
 
 variable "ecr_images_quantity" {
   description = "The total amount of images which will be stored in repo with and without prefixes. If set to 0 lifecycle will not be created"
-  type = number
+  type        = number
 }
